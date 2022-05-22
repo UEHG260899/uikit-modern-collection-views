@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BMS-Yy-E4O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BMS-Yy-E4O">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +21,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BP6-Vh-AZ5">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Kz-V1-c2q">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -42,7 +44,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzi-sq-5B2">
-                                                    <rect key="frame" x="16" y="152" width="198" height="24"/>
+                                                    <rect key="frame" x="16" y="155.5" width="198" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -77,14 +79,14 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="rFB-jg-Qbg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BP6-Vh-AZ5" firstAttribute="leading" secondItem="rFB-jg-Qbg" secondAttribute="leading" id="EnE-cj-yiS"/>
                             <constraint firstItem="BP6-Vh-AZ5" firstAttribute="top" secondItem="rFB-jg-Qbg" secondAttribute="top" id="FlX-i3-HKE"/>
                             <constraint firstItem="rFB-jg-Qbg" firstAttribute="trailing" secondItem="BP6-Vh-AZ5" secondAttribute="trailing" id="rAb-2g-glG"/>
                             <constraint firstItem="rFB-jg-Qbg" firstAttribute="bottom" secondItem="BP6-Vh-AZ5" secondAttribute="bottom" id="yhy-Ev-YaC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="rFB-jg-Qbg"/>
                     </view>
                     <navigationItem key="navigationItem" id="WFO-eZ-5O1"/>
                     <connections>
@@ -128,16 +130,16 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bed-He-4Pd">
-                                                    <rect key="frame" x="128" y="16" width="250" height="55"/>
+                                                    <rect key="frame" x="128" y="16" width="250" height="48"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLf-eg-PJc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="26.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="36.5" height="23"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOb-9p-jIZ">
-                                                            <rect key="frame" x="0.0" y="34.5" width="39.5" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="31" width="33.5" height="17"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -145,7 +147,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1nd-cn-uHC">
-                                                    <rect key="frame" x="353" y="90" width="25" height="24"/>
+                                                    <rect key="frame" x="352" y="89" width="26" height="26"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                 </imageView>
                                             </subviews>
@@ -189,6 +191,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wdc-kX-NQN"/>
                         <color key="backgroundColor" name="rw-bg"/>
                         <constraints>
                             <constraint firstItem="7de-yS-rfX" firstAttribute="leading" secondItem="Wdc-kX-NQN" secondAttribute="leading" id="Cdp-DE-nY1"/>
@@ -196,7 +199,6 @@
                             <constraint firstItem="7de-yS-rfX" firstAttribute="top" secondItem="Wdc-kX-NQN" secondAttribute="top" id="SXe-Ja-Kq4"/>
                             <constraint firstItem="Wdc-kX-NQN" firstAttribute="bottom" secondItem="7de-yS-rfX" secondAttribute="bottom" id="yDK-kT-9Uk"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Wdc-kX-NQN"/>
                     </view>
                     <navigationItem key="navigationItem" id="G17-7n-i3L">
                         <rightBarButtonItems>
@@ -231,7 +233,7 @@
         <!--Tutorial Detail View Controller-->
         <scene sceneID="BLL-oU-84i">
             <objects>
-                <viewController id="irX-xb-ad7" customClass="TutorialDetailViewController" customModule="RWLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialDetailViewController" id="irX-xb-ad7" customClass="TutorialDetailViewController" customModule="RWLibrary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gDa-MT-8gM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -243,22 +245,22 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LTa-L9-gtb">
-                                <rect key="frame" x="16" y="260" width="382" height="100"/>
+                                <rect key="frame" x="16" y="260" width="382" height="93"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3r3-oF-TMt">
-                                        <rect key="frame" x="0.0" y="0.0" width="52.5" height="33.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="46.5" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publish Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYk-Mp-sbz">
-                                        <rect key="frame" x="0.0" y="41.5" width="96.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="38" width="81.5" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erd-si-z7l">
-                                        <rect key="frame" x="0.0" y="70" width="97" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="erd-si-z7l">
+                                        <rect key="frame" x="0.0" y="63" width="97" height="30"/>
                                         <state key="normal" title="Add To Queue"/>
                                         <connections>
                                             <action selector="toggleQueued" destination="irX-xb-ad7" eventType="touchUpInside" id="MdH-Ld-IP1"/>
@@ -267,7 +269,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hmq-ZX-w11">
-                                <rect key="frame" x="6" y="376" width="402" height="480"/>
+                                <rect key="frame" x="6" y="369" width="402" height="487"/>
                                 <color key="backgroundColor" name="rw-bg"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZZX-l5-O1L">
                                     <size key="itemSize" width="50" height="50"/>
@@ -315,6 +317,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wvm-LR-Ftd"/>
                         <color key="backgroundColor" name="rw-bg"/>
                         <constraints>
                             <constraint firstItem="Wvm-LR-Ftd" firstAttribute="trailing" secondItem="hmq-ZX-w11" secondAttribute="trailing" constant="6" id="2r3-Qa-AaT"/>
@@ -328,7 +331,6 @@
                             <constraint firstItem="Wvm-LR-Ftd" firstAttribute="trailing" secondItem="ecP-UP-6Yu" secondAttribute="trailing" id="rSv-t3-Nwp"/>
                             <constraint firstItem="hmq-ZX-w11" firstAttribute="leading" secondItem="Wvm-LR-Ftd" secondAttribute="leading" constant="6" id="yXQ-7Z-BHU"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Wvm-LR-Ftd"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="hmq-ZX-w11" id="1xH-93-DDe"/>
@@ -401,11 +403,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
-        <image name="book" catalog="system" width="64" height="50"/>
-        <image name="bookmark" catalog="system" width="56" height="64"/>
-        <image name="checkmark.circle" catalog="system" width="64" height="60"/>
-        <image name="play.fill" catalog="system" width="58" height="64"/>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="book" catalog="system" width="128" height="99"/>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
         <namedColor name="rw-bg">
             <color red="0.94900000095367432" green="0.9649999737739563" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -415,5 +417,11 @@
         <namedColor name="rw-light-gray">
             <color red="0.9179999828338623" green="0.92500001192092896" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

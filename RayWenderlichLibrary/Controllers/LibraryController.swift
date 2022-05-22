@@ -15,6 +15,10 @@ final class LibraryController: UIViewController {
     
     private func setupView() {
         self.title = "Library"
+        collectionView.delegate = self
+        collectionView.register(TitleSupplementaryView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: TitleSupplementaryView.reuseIdentifier)
         collectionView.collectionViewLayout = configureCollectionViewLaout()
         configuraDataSource()
         configuraSnapshot()
@@ -39,6 +43,10 @@ extension LibraryController {
             section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
             section.interGroupSpacing = 10
             
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44))
+            let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
+            section.boundarySupplementaryItems = [sectionHeader]
+            
             return section
         }
         
@@ -60,6 +68,18 @@ extension LibraryController {
             
             return cell
         })
+        
+        dataSource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+            if let self = self,
+                let titleSupplementaryView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSupplementaryView.reuseIdentifier, for: indexPath) as? TitleSupplementaryView {
+                
+                let tutorialCollection = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+                titleSupplementaryView.textLabel.text = tutorialCollection.title
+                return titleSupplementaryView
+            } else {
+                return nil
+            }
+        }
     }
     
     func configuraSnapshot() {
@@ -71,5 +91,16 @@ extension LibraryController {
         }
         
         dataSource.apply(currentSnapshot, animatingDifferences: false)
+    }
+}
+
+extension LibraryController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let tutorial = dataSource.itemIdentifier(for: indexPath),
+           let tutorialDetailController = storyboard?.instantiateViewController(identifier: TutorialDetailViewController.identifier, creator: { coder in
+               return TutorialDetailViewController(coder: coder, tutorial: tutorial)
+           }) {
+            show(tutorialDetailController, sender: nil)
+        }
     }
 }

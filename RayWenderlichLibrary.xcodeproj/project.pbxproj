@@ -26,6 +26,7 @@
 		97D304462361626100307413 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D304452361626100307413 /* ContentCell.swift */; };
 		97D304482361628900307413 /* QueueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D304472361628900307413 /* QueueCell.swift */; };
 		A4B6802C2839B3BD0064F509 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6802B2839B3BD0064F509 /* DataSource.swift */; };
+		A4B6802E2839C35A0064F509 /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6802D2839C35A0064F509 /* TitleSupplementaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		97D304452361626100307413 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		97D304472361628900307413 /* QueueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueCell.swift; sourceTree = "<group>"; };
 		A4B6802B2839B3BD0064F509 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		A4B6802D2839C35A0064F509 /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				97D304432361625000307413 /* TutorialCell.swift */,
 				97D304452361626100307413 /* ContentCell.swift */,
 				97D304472361628900307413 /* QueueCell.swift */,
+				A4B6802D2839C35A0064F509 /* TitleSupplementaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				97D304362361607100307413 /* Tutorial.swift in Sources */,
 				97D304482361628900307413 /* QueueCell.swift in Sources */,
 				97D3042C23615E5800307413 /* UIColor+Extensions.swift in Sources */,
+				A4B6802E2839C35A0064F509 /* TitleSupplementaryView.swift in Sources */,
 				A4B6802C2839B3BD0064F509 /* DataSource.swift in Sources */,
 				97D3043C236160DC00307413 /* Video.swift in Sources */,
 			);
