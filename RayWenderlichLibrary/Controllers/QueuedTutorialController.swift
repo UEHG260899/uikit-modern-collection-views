@@ -65,7 +65,17 @@ extension QueuedTutorialController {
     }
     
     @IBAction func deleteSelectedItems() {
+        guard let selectedIndexPaths = collectionView.indexPathsForSelectedItems else {
+            return
+        }
         
+        let tutorials = selectedIndexPaths.compactMap { dataSource.itemIdentifier(for: $0) }
+        
+        var currentSnapshot = dataSource.snapshot()
+        currentSnapshot.deleteItems(tutorials)
+        
+        dataSource.apply(currentSnapshot, animatingDifferences: true)
+        isEditing.toggle()
     }
     
     @IBAction func triggerUpdates() {
