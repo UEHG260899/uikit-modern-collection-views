@@ -17,3 +17,9 @@ extension TutorialCollection: Equatable {
         return lhs.identifier == rhs.identifier
     }
 }
+
+extension TutorialCollection {
+    var queuedTutorials: [Tutorial] {
+        return tutorials.filter({ $0.isQueued })
+    }
+}

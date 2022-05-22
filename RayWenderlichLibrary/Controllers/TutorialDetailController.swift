@@ -54,6 +54,8 @@ final class TutorialDetailViewController: UIViewController {
     }
     
     @IBAction func toggleQueued() {
+        tutorial.isQueued.toggle()
+        
         UIView.performWithoutAnimation {
             if tutorial.isQueued {
                 queueButton.setTitle("Remove from queue", for: .normal)
