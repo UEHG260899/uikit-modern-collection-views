@@ -2,6 +2,9 @@ import UIKit
 
 class QueuedTutorialController: UIViewController {
     
+    static let badgeElementKind = "badge-element-kind"
+    
+    
     enum Section {
         case main
     }
@@ -19,6 +22,8 @@ class QueuedTutorialController: UIViewController {
     @IBOutlet var applyUpdatesButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    private var timer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -30,12 +35,34 @@ class QueuedTutorialController: UIViewController {
         navigationItem.rightBarButtonItem = nil
         
         collectionView.collectionViewLayout = configureCollectionViewLayout()
+        collectionView.register(BadgeSupplementaryView.self,
+                                forSupplementaryViewOfKind: QueuedTutorialController.badgeElementKind,
+                                withReuseIdentifier: BadgeSupplementaryView.reuseIdentifier)
         configureDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureSnapshot()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { [weak self] _ in
+            guard let self = self else {
+                return
+            }
+            
+            self.triggerUpdates()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                
+                self.applyUpdates()
+            }
+        })
     }
 }
 
@@ -79,17 +106,55 @@ extension QueuedTutorialController {
     }
     
     @IBAction func triggerUpdates() {
+        let indexPaths = collectionView.indexPathsForVisibleItems
+        let randomIndexPath = indexPaths[Int.random(in: 0..<indexPaths.count)]
+        let tutorial = dataSource.itemIdentifier(for: randomIndexPath)
+        tutorial?.updateCount = 3
         
+        let badgeView = collectionView.supplementaryView(forElementKind: QueuedTutorialController.badgeElementKind, at: randomIndexPath)
+        badgeView?.isHidden = false
     }
     
     @IBAction func applyUpdates() {
+        let tutorials = dataSource.snapshot().itemIdentifiers
+        
+        if var firstTutorial = tutorials.first,
+           tutorials.count > 2 {
+            let tutorialsWithUpdates = tutorials.filter { $0.updateCount > 0 }
+            
+            var currentSnapshot = dataSource.snapshot()
+            tutorialsWithUpdates.forEach { tutorial in
+                if tutorial != firstTutorial {
+                    currentSnapshot.moveItem(tutorial, beforeItem: firstTutorial)
+                    firstTutorial = tutorial
+                    tutorial.updateCount = 0
+                }
+                
+                if let indexPath = dataSource.indexPath(for: tutorial) {
+                    let badgeView = collectionView.supplementaryView(forElementKind: QueuedTutorialController.badgeElementKind, at: indexPath)
+                    badgeView?.isHidden = true
+                }
+            }
+            
+            dataSource.apply(currentSnapshot, animatingDifferences: true)
+        }
     }
 }
 
 extension QueuedTutorialController {
     func configureCollectionViewLayout() -> UICollectionViewCompositionalLayout {
+        
+        let anchorEdges: NSDirectionalRectEdge = [.top, .trailing]
+        let offset = CGPoint(x: 0.3, y: -0.3)
+        let badgeAnchor = NSCollectionLayoutAnchor(edges: anchorEdges, fractionalOffset: offset)
+        
+        let badgeSize = NSCollectionLayoutSize(widthDimension: .absolute(20), heightDimension: .absolute(20))
+        let badge = NSCollectionLayoutSupplementaryItem(layoutSize: badgeSize, elementKind: QueuedTutorialController.badgeElementKind, containerAnchor: badgeAnchor)
+        
+        
+        
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let item = NSCollectionLayoutItem(layoutSize: itemSize, supplementaryItems: [badge])
         item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         
         let gropSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(149))
@@ -113,6 +178,23 @@ extension QueuedTutorialController {
             
             return cell
         })
+        
+        dataSource.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+            
+            guard let self = self,
+                  let tutorial = self.dataSource.itemIdentifier(for: indexPath),
+                  let badgeView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BadgeSupplementaryView.reuseIdentifier, for: indexPath) as? BadgeSupplementaryView else {
+                return nil
+            }
+            
+            if tutorial.updateCount > 0 {
+                badgeView.isHidden = false
+            } else {
+                badgeView.isHidden = true
+            }
+            
+            return badgeView
+        }
     }
     
     func configureSnapshot() {
